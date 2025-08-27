@@ -60,7 +60,7 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 
 ```bash
 # Clone o repositório
-git clone <repository-url>
+git clone git@github.com:a-supernova/iris-web.git
 cd iris-web
 
 # Instale as dependências
