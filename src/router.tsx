@@ -1,8 +1,13 @@
+import { BrowserRouter, Routes } from "react-router";
+import { PublicRoutes } from "./pages/(public)/route";
+
+const ROUTES: React.ReactNode[] = [<PublicRoutes />];
+
 function Router() {
   return (
-    <div>
-      <h1>Hello, Iris!</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>{ROUTES.map((route) => route)}</Routes>
+    </BrowserRouter>
   );
 }
 
