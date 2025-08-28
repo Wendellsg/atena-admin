@@ -16,9 +16,19 @@ O Iris Web é uma interface web desenvolvida para um sistema completo de anális
 
 Este projeto foi iniciado com `yarn create vite` e utiliza:
 
+### Core
 - **React** com TypeScript
 - **Vite** para build e desenvolvimento
-- **ESLint** para qualidade de código
+- **React Router v7** para roteamento declarativo
+
+### Estilização
+- **Tailwind CSS v4** - Framework CSS utility-first
+- **ShadCN/UI** - Sistema de componentes baseado em Radix UI
+- **Lucide React** - Biblioteca de ícones
+
+### Qualidade de Código
+- **ESLint** para linting
+- **TypeScript** para tipagem estática
 
 ## Estrutura do Sistema
 
@@ -49,6 +59,26 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 - Gerenciamento de usuários
 - Configuração de integrações
 - Análise de uso do sistema
+
+## Arquitetura Técnica
+
+### Roteamento
+- **Padrão Declarativo**: Roteamento baseado em React Router v7
+- **File-Based Structure**: Organização intuitiva de páginas e rotas
+- **Layouts Aninhados**: Suporte a layouts públicos e privados
+- **Rotas Dinâmicas**: Parâmetros de URL tipados
+
+### Design System
+- **Tokens CSS**: Sistema de design com variáveis CSS para temas
+- **Componentes Modulares**: Biblioteca baseada em ShadCN/UI + Radix
+- **Responsividade**: Design mobile-first com Tailwind CSS
+- **Acessibilidade**: Componentes acessíveis por padrão
+
+### Developer Experience
+- **TypeScript**: Tipagem estática completa
+- **Path Aliases**: Imports organizados com `@/`
+- **Hot Reload**: Desenvolvimento com Vite
+- **Linting**: ESLint configurado para React e TypeScript
 
 ## Desenvolvimento
 
@@ -86,23 +116,48 @@ yarn preview
 yarn lint
 ```
 
+### Comandos ShadCN/UI
+
+```bash
+# Adicionar novos componentes UI
+npx shadcn@latest add [component-name]
+
+# Exemplos:
+npx shadcn@latest add button
+npx shadcn@latest add card
+npx shadcn@latest add input
+```
+
 ## Estrutura de Pastas
 
 ```
 src/
 ├── assets/          # Assets estáticos (imagens, ícones)
 ├── components/      # Componentes React reutilizáveis
+│   └── ui/          # Componentes base do ShadCN/UI
 ├── constants/       # Constantes da aplicação
-├── pages/          # Páginas da aplicação (file-based routing)
-│   ├── admin/      # /admin -> page.tsx
-│   ├── users/      # /users -> page.tsx, /users/[id] -> [id]/page.tsx
-│   └── ...         # Estrutura baseada em rotas de arquivo
-├── services/       # Serviços de API e integrações
-├── hooks/          # Custom hooks
-├── utils/          # Funções utilitárias
-├── types/          # Definições de tipos TypeScript
-└── styles/         # Estilos globais e temas
+├── lib/             # Utilitários (cn function, etc.)
+├── pages/           # Páginas da aplicação (file-based routing)
+│   ├── (public)/    # Rotas públicas
+│   ├── (private)/   # Rotas privadas (autenticadas)
+│   └── **/components/ # Componentes específicos de páginas
+├── services/        # Serviços de API e integrações
+├── hooks/           # Custom hooks
+├── utils/           # Funções utilitárias
+├── types/           # Definições de tipos TypeScript
+└── styles/          # Estilos globais e temas
 ```
+
+### Sistema de Estilização
+
+O projeto utiliza uma arquitetura de estilização moderna com:
+
+- **Design System**: Baseado em tokens CSS com suporte a temas claro/escuro
+- **Componentes Reutilizáveis**: Sistema ShadCN/UI com variants e composição
+- **Utility-First**: Classes Tailwind CSS para estilização rápida e consistente
+- **Acessibilidade**: Componentes baseados em Radix UI com foco em a11y
+
+> 🎨 **Documentação Completa**: Para detalhes sobre o sistema de design, componentes e padrões de estilização, consulte o arquivo [`/specs/STYLING.MD`](./specs/STYLING.MD).
 
 ### Padrão de Roteamento File-Based
 
