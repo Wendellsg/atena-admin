@@ -106,14 +106,18 @@ src/
 
 ### Padrão de Roteamento File-Based
 
-As páginas seguem o padrão de roteamento baseado em arquivos:
+As páginas seguem o padrão de roteamento declarativo do React Router baseado em arquivos:
 
-- `/admin` → `pages/admin/page.tsx`
-- `/users` → `pages/users/page.tsx`
-- `/users/[id]` → `pages/users/[id]/page.tsx`
-- `/dashboard` → `pages/dashboard/page.tsx`
+- `/` → `pages/(public)/page.tsx`
+- `/login` → `pages/(public)/login/page.tsx`
+- `/register` → `pages/(public)/register/page.tsx`
+- `/dashboard` → `pages/(private)/dashboard/page.tsx`
+- `/dashboard/users` → `pages/(private)/dashboard/users/page.tsx`
+- `/dashboard/users/[id]` → `pages/(private)/dashboard/users/[id]/page.tsx`
 
 Cada rota deve ter um arquivo `page.tsx` que exporta o componente da página como default.
+
+> 📋 **Documentação Completa**: Para detalhes completos sobre a arquitetura de roteamento, convenções e padrões implementados, consulte o arquivo [`/specs/ROUTING.MD`](./specs/ROUTING.MD).
 
 ## Configuração
 
