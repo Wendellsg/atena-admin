@@ -15,18 +15,16 @@ function Router() {
       <Routes>
         <Route path="/" element={<PublicLayout />}>
           <Route index element={<LangePage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Route>
 
         <Route element={<PrivateLayout />}>
           <Route path="/dashboard" element={<DashBoardLayout />}>
             <Route index element={<DashboardPage />} />
-            <Route path="users/*">
-              <Route path="/dashboard/users">
-                <Route index element={<UsersPage />} />
-                <Route path=":id" element={<UserPage />} />
-              </Route>
+            <Route path="/dashboard/users">
+              <Route index element={<UsersPage />} />
+              <Route path="/dashboard/users/:id" element={<UserPage />} />
             </Route>
           </Route>
         </Route>

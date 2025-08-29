@@ -5,7 +5,6 @@ import Router from "./router.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    aaa
     <Router />
   </StrictMode>
 );
