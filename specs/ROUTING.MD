@@ -10,20 +10,16 @@ O projeto utiliza o **padrão declarativo do React Router** com uma estrutura de
 src/pages/
 ├── (private)/          # Rotas privadas (requerem autenticação)
 │   ├── layout.tsx      # Layout para páginas privadas
-│   ├── routes.tsx      # Definição das rotas privadas
 │   └── dashboard/      # Módulo dashboard
 │       ├── layout.tsx  # Layout específico do dashboard
 │       ├── page.tsx    # Página principal (/dashboard)
-│       ├── routes.tsx  # Rotas do dashboard
 │       └── users/      # Submódulo de usuários
 │           ├── page.tsx        # Lista de usuários (/dashboard/users)
-│           ├── routes.tsx      # Rotas dos usuários
 │           └── [id]/
 │               └── page.tsx    # Usuário específico (/dashboard/users/:id)
 └── (public)/           # Rotas públicas
     ├── layout.tsx      # Layout para páginas públicas
     ├── page.tsx        # Página inicial (/)
-    ├── route.tsx       # Definição das rotas públicas
     ├── login/
     │   └── page.tsx    # Página de login (/login)
     └── register/
@@ -35,7 +31,6 @@ src/pages/
 ### Arquivos de Página
 - **`page.tsx`**: Componente da página que será renderizado na rota
 - **`layout.tsx`**: Componente de layout que envolve as páginas filhas
-- **`routes.tsx`**: Definição declarativa das rotas usando React Router
 
 ### Estrutura de Pastas
 - **`(private)/`**: Agrupa rotas que requerem autenticação
@@ -84,9 +79,6 @@ export function PrivateLayout() {
 }
 ```
 
-### 3. Definição de Rotas
-
-
 ### 3. Definição Centralizada e Aninhada de Rotas
 
 As rotas são definidas diretamente e de forma aninhada no arquivo `src/router.tsx`:
@@ -120,7 +112,7 @@ function Router() {
             <Route path="users/*">
               <Route path="/dashboard/users">
                 <Route index element={<UsersPage />} />
-                <Route path=":id" element={<UserPage />} />
+                <Route path="/dashboard/users/:id" element={<UserPage />} />
               </Route>
             </Route>
           </Route>
@@ -133,32 +125,6 @@ function Router() {
 export default Router;
 ```
 
-### 4. Rotas com Parâmetros
-
-Para rotas dinâmicas, usa-se a sintaxe `:param`:
-
-```tsx
-// src/pages/(private)/dashboard/users/routes.tsx
-import { Route } from "react-router";
-import { UserPage } from "./[id]/page";
-import { UsersPage } from "./page";
-
-export function UsersRoutes() {
-  return (
-    <Route path="/dashboard/users">
-      <Route index element={<UsersPage />} />
-      <Route path=":id" element={<UserPage />} />
-    </Route>
-  );
-}
-```
-
-### 5. Router Principal
-
-
-### 5. Router Principal
-
-O router principal agora centraliza e aninha todas as rotas diretamente, conforme exemplo acima.
 
 ## Mapeamento de Rotas
 
