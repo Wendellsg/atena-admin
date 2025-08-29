@@ -12,7 +12,6 @@ import { RegisterPage } from "./pages/(public)/register/page";
 function Router() {
   return (
     <BrowserRouter>
-      aa
       <Routes>
         <Route path="/" element={<PublicLayout />}>
           <Route index element={<LangePage />} />

@@ -86,23 +86,51 @@ export function PrivateLayout() {
 
 ### 3. Definição de Rotas
 
-As rotas são definidas declarativamente usando componentes `<Route>`:
+
+### 3. Definição Centralizada e Aninhada de Rotas
+
+As rotas são definidas diretamente e de forma aninhada no arquivo `src/router.tsx`:
 
 ```tsx
-// src/pages/(private)/dashboard/routes.tsx
-import { Route } from "react-router";
-import { DashBoardLayout } from "./layout";
-import { DashboardPage } from "./page";
-import { UsersRoutes } from "./users/routes";
+// src/router.tsx
+import { BrowserRouter, Route, Routes } from "react-router";
+import { DashBoardLayout } from "./pages/(private)/dashboard/layout";
+import { DashboardPage } from "./pages/(private)/dashboard/page";
+import { UserPage } from "./pages/(private)/dashboard/users/[id]/page";
+import { UsersPage } from "./pages/(private)/dashboard/users/page";
+import { PrivateLayout } from "./pages/(private)/layout";
+import { PublicLayout } from "./pages/(public)/layout";
+import { LoginPage } from "./pages/(public)/login/page";
+import { LangePage } from "./pages/(public)/page";
+import { RegisterPage } from "./pages/(public)/register/page";
 
-export function DashRoutes() {
+function Router() {
   return (
-    <Route path="/dashboard" element={<DashBoardLayout />}>
-      <Route index element={<DashboardPage />} />
-      <Route path="users/*" element={<UsersRoutes />} />
-    </Route>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<PublicLayout />}>
+          <Route index element={<LangePage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+        </Route>
+
+        <Route element={<PrivateLayout />}>
+          <Route path="/dashboard" element={<DashBoardLayout />}>
+            <Route index element={<DashboardPage />} />
+            <Route path="users/*">
+              <Route path="/dashboard/users">
+                <Route index element={<UsersPage />} />
+                <Route path=":id" element={<UserPage />} />
+              </Route>
+            </Route>
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
+
+export default Router;
 ```
 
 ### 4. Rotas com Parâmetros
@@ -127,31 +155,10 @@ export function UsersRoutes() {
 
 ### 5. Router Principal
 
-O router principal organiza todas as rotas:
 
-```tsx
-// src/router.tsx
-import { BrowserRouter, Routes } from "react-router";
-import { PublicRoutes } from "./pages/(public)/route";
-import { PrivateRoutes } from "./pages/(private)/routes";
+### 5. Router Principal
 
-const ROUTES: React.ReactNode[] = [
-  <PublicRoutes />,
-  <PrivateRoutes />
-];
-
-function Router() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        {ROUTES.map((route) => route)}
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default Router;
-```
+O router principal agora centraliza e aninha todas as rotas diretamente, conforme exemplo acima.
 
 ## Mapeamento de Rotas
 
@@ -166,16 +173,18 @@ export default Router;
 
 ## Vantagens do Padrão
 
-1. **Organização Intuitiva**: A estrutura de pastas reflete diretamente as rotas da aplicação
-2. **Separação de Responsabilidades**: Layouts, páginas e definições de rotas são separados
-3. **Reutilização**: Layouts podem ser compartilhados entre múltiplas rotas
-4. **Composição**: Rotas podem ser facilmente compostas e aninhadas
-5. **Manutenibilidade**: Fácil localização e manutenção de componentes relacionados às rotas
-6. **Escalabilidade**: Estrutura permite crescimento organizado da aplicação
+
+## Vantagens da Nova Abordagem
+
+1. **Centralização**: Todas as rotas são definidas em um único local (`src/router.tsx`)
+2. **Organização Intuitiva**: Estrutura de pastas reflete as rotas, mas sem arquivos intermediários
+3. **Composição e Aninhamento**: Rotas aninhadas diretamente via JSX
+4. **Manutenção Simplificada**: Mudanças nas rotas são feitas em um único arquivo
+5. **Escalabilidade**: Estrutura permite crescimento organizado da aplicação
 
 ## Benefícios da Abordagem Declarativa
 
 - **Legibilidade**: As rotas são definidas de forma clara e declarativa
 - **Composição**: Facilita a composição de rotas complexas
 - **Reutilização**: Componentes de rota podem ser reutilizados
-- **Manutenção**: Mudanças nas rotas são centralizadas nos arquivos `routes.tsx`
+- **Manutenção**: Mudanças nas rotas são centralizadas no arquivo `router.tsx`

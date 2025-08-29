@@ -161,14 +161,17 @@ O projeto utiliza uma arquitetura de estilização moderna com:
 
 ### Padrão de Roteamento File-Based
 
-As páginas seguem o padrão de roteamento declarativo do React Router baseado em arquivos:
+
+O projeto utiliza o padrão declarativo do React Router, com definição centralizada e aninhada das rotas diretamente no arquivo `src/router.tsx`. A estrutura de pastas segue o padrão file-based, mas todas as rotas são configuradas em um único local, facilitando manutenção e visualização.
+
+Exemplo de mapeamento de rotas:
 
 - `/` → `pages/(public)/page.tsx`
 - `/login` → `pages/(public)/login/page.tsx`
 - `/register` → `pages/(public)/register/page.tsx`
 - `/dashboard` → `pages/(private)/dashboard/page.tsx`
 - `/dashboard/users` → `pages/(private)/dashboard/users/page.tsx`
-- `/dashboard/users/[id]` → `pages/(private)/dashboard/users/[id]/page.tsx`
+- `/dashboard/users/:id` → `pages/(private)/dashboard/users/[id]/page.tsx`
 
 Cada rota deve ter um arquivo `page.tsx` que exporta o componente da página como default.
 
