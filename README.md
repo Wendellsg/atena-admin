@@ -177,6 +177,48 @@ Cada rota deve ter um arquivo `page.tsx` que exporta o componente da página com
 
 > 📋 **Documentação Completa**: Para detalhes completos sobre a arquitetura de roteamento, convenções e padrões implementados, consulte o arquivo [`/specs/ROUTING.MD`](./specs/ROUTING.MD).
 
+### Padrão de Formulários
+
+O projeto utiliza uma arquitetura moderna para formulários baseada em **React Hook Form**, **Zod** para validação e componentes **ShadCN/UI**, proporcionando uma experiência consistente, performática e type-safe.
+
+**Principais características:**
+
+- **Validação Declarativa**: Schemas Zod para validação robusta
+- **Performance Otimizada**: React Hook Form com minimal re-renders
+- **Type Safety**: Integração completa com TypeScript
+- **Componentes Consistentes**: Padrão uniforme usando ShadCN/UI
+- **Acessibilidade**: Labels, descrições e mensagens de erro adequadas
+
+**Exemplo de implementação:**
+
+```tsx
+// Schema de validação
+const loginSchema = z.object({
+  document: z.string().min(11).max(11),
+  password: z.string().min(6).max(100),
+});
+
+// Componente do formulário
+export function LoginForm({ onSubmit }: { onSubmit: (data: LoginFormValues) => void }) {
+  const form = useForm({
+    resolver: zodResolver(loginSchema),
+    defaultValues: { document: "", password: "" },
+  });
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <FormField name="document" />
+        <FormField name="password" />
+        <Button type="submit">Entrar</Button>
+      </form>
+    </Form>
+  );
+}
+```
+
+> 📝 **Documentação Completa**: Para padrões de implementação, validações comuns, boas práticas e exemplos detalhados, consulte o arquivo [`/specs/FORMS.MD`](./specs/FORMS.MD).
+
 ## Configuração
 
 ### Variáveis de Ambiente
