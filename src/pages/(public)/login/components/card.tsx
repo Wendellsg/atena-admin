@@ -1,12 +1,14 @@
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { LoginForm, type LoginFormValues } from "./form";
 
 export function LoginCard() {
+  async function handleLogin(data: LoginFormValues) {
+    // Call your login API here
+  }
+
   return (
     <Card>
-      <Input />
-      <Button>Entrar</Button>
+      <LoginForm onSubmit={handleLogin} />
     </Card>
   );
 }
