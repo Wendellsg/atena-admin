@@ -49,6 +49,7 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 ## Funcionalidades
 
 ### Para Usuários
+- Gerenciamento de conexões com a conta da B3 e compartilhamento de dados com outros clientes
 - Dashboard de investimentos personalizado
 - Visualização de dados financeiros em tempo real
 - Insights e recomendações baseadas em análise de dados
