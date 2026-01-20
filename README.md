@@ -1,10 +1,10 @@
-# Iris Web
+# Atena Web
 
 Um serviço de front-end web para gerenciamento de insights de investimentos financeiros.
 
 ## Sobre o Projeto
 
-O Iris Web é uma interface web desenvolvida para um sistema completo de análise de investimentos que permite aos usuários:
+O Atena Web é uma interface web desenvolvida para um sistema completo de análise de investimentos que permite aos usuários:
 
 - **Criar conta e autenticação**: Sistema de registro e login de usuários
 - **Integração com API da B3**: Conexão direta com a API da Bolsa de Valores B3 para obtenção de dados financeiros em tempo real
@@ -17,16 +17,19 @@ O Iris Web é uma interface web desenvolvida para um sistema completo de anális
 Este projeto foi iniciado com `yarn create vite` e utiliza:
 
 ### Core
+
 - **React** com TypeScript
 - **Vite** para build e desenvolvimento
 - **React Router v7** para roteamento declarativo
 
 ### Estilização
+
 - **Tailwind CSS v4** - Framework CSS utility-first
 - **ShadCN/UI** - Sistema de componentes baseado em Radix UI
 - **Lucide React** - Biblioteca de ícones
 
 ### Qualidade de Código
+
 - **ESLint** para linting
 - **TypeScript** para tipagem estática
 
@@ -34,7 +37,7 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Iris Web      │    │   Backend API   │    │   API B3        │
+│   Atena Web      │    │   Backend API   │    │   API B3        │
 │   (Frontend)    │◄──►│                 │◄──►│                 │
 │                 │    │                 │    │                 │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
@@ -49,6 +52,7 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 ## Funcionalidades
 
 ### Para Usuários
+
 - Gerenciamento de conexões com a conta da B3 e compartilhamento de dados com outros clientes
 - Dashboard de investimentos personalizado
 - Visualização de dados financeiros em tempo real
@@ -56,6 +60,7 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 - Gerenciamento de portfólio
 
 ### Para Administradores
+
 - Monitoramento de conexões ativas
 - Gerenciamento de usuários
 - Configuração de integrações
@@ -64,18 +69,21 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 ## Arquitetura Técnica
 
 ### Roteamento
+
 - **Padrão Declarativo**: Roteamento baseado em React Router v7
 - **File-Based Structure**: Organização intuitiva de páginas e rotas
 - **Layouts Aninhados**: Suporte a layouts públicos e privados
 - **Rotas Dinâmicas**: Parâmetros de URL tipados
 
 ### Design System
+
 - **Tokens CSS**: Sistema de design com variáveis CSS para temas
 - **Componentes Modulares**: Biblioteca baseada em ShadCN/UI + Radix
 - **Responsividade**: Design mobile-first com Tailwind CSS
 - **Acessibilidade**: Componentes acessíveis por padrão
 
 ### Developer Experience
+
 - **TypeScript**: Tipagem estática completa
 - **Path Aliases**: Imports organizados com `@/`
 - **Hot Reload**: Desenvolvimento com Vite
@@ -84,6 +92,7 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 ## Desenvolvimento
 
 ### Pré-requisitos
+
 - Node.js (versão 16 ou superior)
 - Yarn package manager
 
@@ -91,8 +100,8 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 
 ```bash
 # Clone o repositório
-git clone git@github.com:a-supernova/iris-web.git
-cd iris-web
+git clone git@github.com:a-supernova/atena-web.git
+cd atena-web
 
 # Instale as dependências
 yarn install
@@ -162,7 +171,6 @@ O projeto utiliza uma arquitetura de estilização moderna com:
 
 ### Padrão de Roteamento File-Based
 
-
 O projeto utiliza o padrão declarativo do React Router, com definição centralizada e aninhada das rotas diretamente no arquivo `src/router.tsx`. A estrutura de pastas segue o padrão file-based, mas todas as rotas são configuradas em um único local, facilitando manutenção e visualização.
 
 Exemplo de mapeamento de rotas:
@@ -200,7 +208,11 @@ const loginSchema = z.object({
 });
 
 // Componente do formulário
-export function LoginForm({ onSubmit }: { onSubmit: (data: LoginFormValues) => void }) {
+export function LoginForm({
+  onSubmit,
+}: {
+  onSubmit: (data: LoginFormValues) => void;
+}) {
   const form = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: { document: "", password: "" },
