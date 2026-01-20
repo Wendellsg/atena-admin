@@ -1,16 +1,10 @@
 # Atena Web
 
-Um serviço de front-end web para gerenciamento de insights de investimentos financeiros.
+Plataforma multidisciplinar de ensino online com ambiente interativo e recursos avançados para aprendizado.
 
 ## Sobre o Projeto
 
-O Atena Web é uma interface web desenvolvida para um sistema completo de análise de investimentos que permite aos usuários:
-
-- **Criar conta e autenticação**: Sistema de registro e login de usuários
-- **Integração com API da B3**: Conexão direta com a API da Bolsa de Valores B3 para obtenção de dados financeiros em tempo real
-- **Processamento de dados**: Os dados financeiros são processados para gerar insights inteligentes sobre investimentos
-- **Gerenciamento de conexões**: Interface para administrar e monitorar as conexões de API e clientes
-- **Multi-client**: A API backend serve dados não apenas para este front-end, mas também para outros clientes
+Atena Web é uma aplicação frontend desenvolvida em React e TypeScript, projetada para fornecer uma interface intuitiva e responsiva.
 
 ## Tecnologias
 
@@ -36,11 +30,11 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 ## Estrutura do Sistema
 
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Atena Web      │    │   Backend API   │    │   API B3        │
-│   (Frontend)    │◄──►│                 │◄──►│                 │
-│                 │    │                 │    │                 │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
+┌─────────────────┐    ┌─────────────────┐
+│   Atena Web     │    │   Backend API   │
+│   (Frontend)    │◄──►│                 │
+│                 │    │                 │
+└─────────────────┘    └─────────────────┘
                               │
                               ▼
                        ┌─────────────────┐
@@ -51,20 +45,11 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 
 ## Funcionalidades
 
-### Para Usuários
-
-- Gerenciamento de conexões com a conta da B3 e compartilhamento de dados com outros clientes
-- Dashboard de investimentos personalizado
-- Visualização de dados financeiros em tempo real
-- Insights e recomendações baseadas em análise de dados
-- Gerenciamento de portfólio
-
-### Para Administradores
-
-- Monitoramento de conexões ativas
-- Gerenciamento de usuários
-- Configuração de integrações
-- Análise de uso do sistema
+- Cadastro e autenticação
+- Navegação por cursos e módulos
+- Acesso a materiais de estudo
+- Monitoramento de progresso
+- Provas e avaliações online
 
 ## Arquitetura Técnica
 

@@ -1,9 +1,9 @@
 import { Outlet } from "react-router";
 
-export function DashBoardLayout() {
+export function CoursesLayout() {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2>Cursos PÁGINAS</h2>
       <Outlet />
     </div>
   );

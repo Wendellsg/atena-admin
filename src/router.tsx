@@ -1,8 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import { DashBoardLayout } from "./pages/(private)/dashboard/layout";
-import { DashboardPage } from "./pages/(private)/dashboard/page";
-import { UserPage } from "./pages/(private)/dashboard/users/[id]/page";
-import { UsersPage } from "./pages/(private)/dashboard/users/page";
+import { CoursesLayout } from "./pages/(private)/cursos/layout";
 import { PrivateLayout } from "./pages/(private)/layout";
 import { PublicLayout } from "./pages/(public)/layout";
 import { LoginPage } from "./pages/(public)/login/page";
@@ -18,13 +15,12 @@ function Router() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Route>
-
         <Route element={<PrivateLayout />}>
-          <Route path="/dashboard" element={<DashBoardLayout />}>
-            <Route index element={<DashboardPage />} />
-            <Route path="/dashboard/users">
-              <Route index element={<UsersPage />} />
-              <Route path="/dashboard/users/:id" element={<UserPage />} />
+          <Route path="/cursos" element={<CoursesLayout />}>
+            <Route index element={<CoursesPage />} />
+            <Route path="/cursos">
+              <Route index element={<CoursesPage />} />
+              <Route path="/cursos/:id" element={<CoursePage />} />
             </Route>
           </Route>
         </Route>

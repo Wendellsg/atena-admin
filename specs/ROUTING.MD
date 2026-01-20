@@ -29,10 +29,12 @@ src/pages/
 ## Convenções de Nomenclatura
 
 ### Arquivos de Página
+
 - **`page.tsx`**: Componente da página que será renderizado na rota
 - **`layout.tsx`**: Componente de layout que envolve as páginas filhas
 
 ### Estrutura de Pastas
+
 - **`(private)/`**: Agrupa rotas que requerem autenticação
 - **`(public)/`**: Agrupa rotas públicas (sem autenticação)
 - **`[id]/`**: Indica parâmetro dinâmico na rota (ex: `/users/:id`)
@@ -102,18 +104,15 @@ function Router() {
       <Routes>
         <Route path="/" element={<PublicLayout />}>
           <Route index element={<LangePage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Route>
-
         <Route element={<PrivateLayout />}>
-          <Route path="/dashboard" element={<DashBoardLayout />}>
-            <Route index element={<DashboardPage />} />
-            <Route path="users/*">
-              <Route path="/dashboard/users">
-                <Route index element={<UsersPage />} />
-                <Route path="/dashboard/users/:id" element={<UserPage />} />
-              </Route>
+          <Route path="/cursos" element={<CoursesLayout />}>
+            <Route index element={<CoursesPage />} />
+            <Route path="/cursos">
+              <Route index element={<CoursesPage />} />
+              <Route path="/cursos/:id" element={<CoursePage />} />
             </Route>
           </Route>
         </Route>
@@ -125,20 +124,17 @@ function Router() {
 export default Router;
 ```
 
-
 ## Mapeamento de Rotas
 
-| URL | Arquivo | Descrição |
-|-----|---------|-----------|
-| `/` | `(public)/page.tsx` | Página inicial pública |
-| `/login` | `(public)/login/page.tsx` | Página de login |
-| `/register` | `(public)/register/page.tsx` | Página de registro |
-| `/dashboard` | `(private)/dashboard/page.tsx` | Dashboard principal |
-| `/dashboard/users` | `(private)/dashboard/users/page.tsx` | Lista de usuários |
-| `/dashboard/users/:id` | `(private)/dashboard/users/[id]/page.tsx` | Detalhes do usuário |
+| URL           | Arquivo                           | Descrição              |
+| ------------- | --------------------------------- | ---------------------- |
+| `/`           | `(public)/page.tsx`               | Página inicial pública |
+| `/login`      | `(public)/login/page.tsx`         | Página de login        |
+| `/register`   | `(public)/register/page.tsx`      | Página de registro     |
+| `/cursos`     | `(private)/courses/page.tsx`      | cursos principal       |
+| `/cursos/:id` | `(private)/courses/[id]/page.tsx` | Detalhes do usuário    |
 
 ## Vantagens do Padrão
-
 
 ## Vantagens da Nova Abordagem
 
