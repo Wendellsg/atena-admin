@@ -217,6 +217,35 @@ export function LoginForm({
 
 > 📝 **Documentação Completa**: Para padrões de implementação, validações comuns, boas práticas e exemplos detalhados, consulte o arquivo [`/specs/FORMS.MD`](./specs/FORMS.MD).
 
+### Gerenciamento de Estado e API
+
+Utilizamos **TanStack Query** para gerenciamento de estado do servidor e cache, em conjunto com **Axios** para requisições HTTP type-safe.
+
+**Principais características:**
+
+- **Cache Automático**: Gerenciamento inteligente de dados com stale time e refetch
+- **Mutações Otimizadas**: Atualizações otimistas e invalidação de cache pós-mutação
+- **Arquitetura em Camadas**: Separação clara entre API client, services e hooks
+- **Type Safety**: Tipagem completa de requests e responses
+
+**Exemplo de consumo:**
+
+```tsx
+// Hook customizado
+export const useCourses = () => {
+  return useQuery({
+    queryKey: ["courses"],
+    queryFn: getCourses,
+    staleTime: 1000 * 60 * 5, // 5 minutos
+  });
+};
+
+// Uso no componente
+const { data, isLoading } = useCourses();
+```
+
+> 🔄 **Documentação Completa**: Para especificações detalhadas sobre fetching, caching, mutações e padrões da API, consulte o arquivo [`/specs/DATA_FETCHING.MD`](./specs/DATA_FETCHING.MD).
+
 ## Configuração
 
 ### Variáveis de Ambiente
