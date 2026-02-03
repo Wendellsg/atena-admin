@@ -1,10 +1,10 @@
-# Atena Web
+# Atena Admin
 
-Plataforma multidisciplinar de ensino online com ambiente interativo e recursos avançados para aprendizado.
+Painel administrativo da plataforma Atena - sistema de gerenciamento e administração para controle completo do projeto.
 
 ## Sobre o Projeto
 
-Atena Web é uma aplicação frontend desenvolvida em React e TypeScript, projetada para fornecer uma interface intuitiva e responsiva.
+Atena Admin é uma aplicação frontend desenvolvida em React e TypeScript, projetada para fornecer uma interface administrativa intuitiva e responsiva para gerenciamento da plataforma de ensino online Atena. Este painel permite que administradores gerenciem usuários, cursos, conteúdos e configurações do sistema.
 
 ## Tecnologias
 
@@ -30,26 +30,28 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 ## Estrutura do Sistema
 
 ```
-┌─────────────────┐    ┌─────────────────┐
-│   Atena Web     │    │   Backend API   │
-│   (Frontend)    │◄──►│                 │
-│                 │    │                 │
-└─────────────────┘    └─────────────────┘
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│  Atena Admin    │    │   Backend API   │    │   Atena Web     │
+│  (Admin Panel)  │◄──►│     (Atena)     │◄──►│  (Plataforma)   │
+│                 │    │                 │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
                               │
                               ▼
                        ┌─────────────────┐
-                       │  Outros Clients │
+                       │   Database      │
                        │                 │
                        └─────────────────┘
 ```
 
-## Funcionalidades
+## Funcionalidades Administrativas
 
-- Cadastro e autenticação
-- Navegação por cursos e módulos
-- Acesso a materiais de estudo
-- Monitoramento de progresso
-- Provas e avaliações online
+- **Gerenciamento de Usuários**: Criação, edição e exclusão de usuários
+- **Gerenciamento de Cursos**: Administração completa de cursos e módulos
+- **Gestão de Conteúdo**: Upload e organização de materiais didáticos
+- **Monitoramento**: Acompanhamento de métricas e desempenho da plataforma
+- **Configurações**: Controle de configurações gerais do sistema
+- **Relatórios**: Geração de relatórios e análises administrativas
+- **Controle de Acesso**: Gerenciamento de permissões e roles
 
 ## Arquitetura Técnica
 
@@ -85,8 +87,8 @@ Este projeto foi iniciado com `yarn create vite` e utiliza:
 
 ```bash
 # Clone o repositório
-git clone git@github.com:a-supernova/atena-web.git
-cd atena-web
+git clone git@github.com:a-supernova/atena-admin.git
+cd atena-admin
 
 # Instale as dependências
 yarn install
@@ -271,3 +273,7 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 ## Contato
 
 Para mais informações sobre o projeto, entre em contato com a equipe de desenvolvimento.
+
+---
+
+**Nota**: Este é o painel administrativo da plataforma Atena. Para a aplicação principal voltada aos alunos, veja o projeto [atena-web](../atena-web). Para o backend da API, consulte o projeto [atena](../atena).
